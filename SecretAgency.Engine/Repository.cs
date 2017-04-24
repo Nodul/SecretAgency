@@ -36,6 +36,14 @@ namespace SecretAgency.Engine
         {
             Docs.Add(doc);
         }
+        public void Add(Character character)
+        {
+            Characters.Add(character);
+        }
+        public void Add(Location location)
+        {
+            Locations.Add(location);
+        }
         public void RemoveDoc(string docName)
         {
             Docs.RemoveAll(x => x.name == docName);

@@ -7,6 +7,11 @@
         public string HeaderText;
         public string BodyText;
         public string EndText;
+        public bool IsRevealed { get;  set; }
 
+        public Document(bool isRevealed)
+        {
+            IsRevealed = isRevealed;
+        }
     }
 }

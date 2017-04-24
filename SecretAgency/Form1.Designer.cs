@@ -47,8 +47,11 @@
             this.PlayerName_textbox = new System.Windows.Forms.TextBox();
             this.Suspects_listView = new System.Windows.Forms.ListView();
             this.Suspects_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.Locations_listView = new System.Windows.Forms.ListView();
+            this.Locations_richTextBox = new System.Windows.Forms.RichTextBox();
             this.Main_tabControl.SuspendLayout();
             this.Suspects_Tabpage.SuspendLayout();
+            this.Locations_Tabpage.SuspendLayout();
             this.Archive_Tabpage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +115,8 @@
             // 
             // Locations_Tabpage
             // 
+            this.Locations_Tabpage.Controls.Add(this.Locations_richTextBox);
+            this.Locations_Tabpage.Controls.Add(this.Locations_listView);
             this.Locations_Tabpage.Location = new System.Drawing.Point(4, 22);
             this.Locations_Tabpage.Name = "Locations_Tabpage";
             this.Locations_Tabpage.Padding = new System.Windows.Forms.Padding(3);
@@ -231,6 +236,7 @@
             this.Suspects_listView.Size = new System.Drawing.Size(193, 386);
             this.Suspects_listView.TabIndex = 0;
             this.Suspects_listView.UseCompatibleStateImageBehavior = false;
+            this.Suspects_listView.ItemActivate += new System.EventHandler(this.Suspects_listView_ItemActivate);
             // 
             // Suspects_richTextBox
             // 
@@ -239,6 +245,23 @@
             this.Suspects_richTextBox.Size = new System.Drawing.Size(309, 386);
             this.Suspects_richTextBox.TabIndex = 1;
             this.Suspects_richTextBox.Text = "";
+            // 
+            // Locations_listView
+            // 
+            this.Locations_listView.Location = new System.Drawing.Point(7, 7);
+            this.Locations_listView.Name = "Locations_listView";
+            this.Locations_listView.Size = new System.Drawing.Size(213, 386);
+            this.Locations_listView.TabIndex = 0;
+            this.Locations_listView.UseCompatibleStateImageBehavior = false;
+            this.Locations_listView.ItemActivate += new System.EventHandler(this.Locations_listView_ItemActivate);
+            // 
+            // Locations_richTextBox
+            // 
+            this.Locations_richTextBox.Location = new System.Drawing.Point(227, 7);
+            this.Locations_richTextBox.Name = "Locations_richTextBox";
+            this.Locations_richTextBox.Size = new System.Drawing.Size(289, 386);
+            this.Locations_richTextBox.TabIndex = 1;
+            this.Locations_richTextBox.Text = "";
             // 
             // Form1
             // 
@@ -258,6 +281,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Main_tabControl.ResumeLayout(false);
             this.Suspects_Tabpage.ResumeLayout(false);
+            this.Locations_Tabpage.ResumeLayout(false);
             this.Archive_Tabpage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -285,6 +309,8 @@
         private System.Windows.Forms.ListView Archive_Listview;
         private System.Windows.Forms.RichTextBox Suspects_richTextBox;
         private System.Windows.Forms.ListView Suspects_listView;
+        private System.Windows.Forms.RichTextBox Locations_richTextBox;
+        private System.Windows.Forms.ListView Locations_listView;
     }
 }
 

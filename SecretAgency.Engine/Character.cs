@@ -12,18 +12,21 @@ namespace SecretAgency.Engine
 
     public class Character
     {
-        public string FirstName { get; protected set; }
-        public string LastName { get; protected set; }
+        public string FirstName { get;  set; }
+        public string LastName { get;  set; }
         public string FullName { get {return  FirstName + " " + LastName; } }
-        public int Age { get; protected set; }
-        public Gender Gender { get; protected set; }
-        public Prominence Prominence { get; protected set; }
-        public List<string> TriviaList { get; protected set; }
-        public string Summary { get; protected set; }
-        public string Occupation { get; protected set; }
+        public int Age { get;  set; }
+        public Gender Gender { get;  set; }
+        public Prominence Prominence { get;  set; }
+        public List<string> TriviaList { get;  set; }
+        public string Summary { get;  set; }
+        public string Occupation { get;  set; }
+        public string Address { get;  set; }
+
+        public bool IsRevealed { get;  set; }
         // public Location Location {get; protected set;}
 
-        public Character()
+        public Character(bool isRevealed)
         {
             FirstName = TextGen.GetFirstName(this.Gender);
             LastName = TextGen.GetLastName();
@@ -32,8 +35,10 @@ namespace SecretAgency.Engine
             {
                 TextGen.GetTrivia()
             };
-            Summary = "Seems to be up to no good";
-            Occupation = TextGen.GetOccupation();          
+            //Summary = "Seems to be up to no good";
+            Occupation = TextGen.GetOccupation();
+            IsRevealed = isRevealed;
+            Address = TextGen.GetAddrees();
         }
 
     }

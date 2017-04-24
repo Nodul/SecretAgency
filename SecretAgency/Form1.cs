@@ -93,6 +93,7 @@ namespace SecretAgency
                 case 3: //Groups
                     break;
                 case 4: //Locations
+                    DrawLocations();
                     break;
                 case 5: //Assets
                     break;
@@ -109,8 +110,37 @@ namespace SecretAgency
             Suspects_listView.Items.Clear();
             foreach (Character c in Repository.Instance.Characters)
             {
-                Suspects_listView.Items.Add(c.FullName);
+                if (c.IsRevealed)
+                {
+                    Suspects_listView.Items.Add(c.FullName);
+                }
+                
             }
+        }
+        private void Suspects_listView_ItemActivate(object sender, EventArgs e)
+        {
+            Character cha = Repository.Instance.Characters[Suspects_listView.SelectedItems[0].Index];
+            string entry = $"{cha.FullName}, {cha.Age} y.o.\n{cha.Address}\n\nOccupation: {cha.Occupation}\nProminence: {cha.Prominence}\n\nSummary: {cha.Summary}\n\nNotes: {cha.TriviaList[0]}\n\n[CURRENT ORDERS]"; 
+            Suspects_richTextBox.Text = entry;
+        }
+
+        private void DrawLocations()
+        {
+            Locations_listView.Items.Clear();
+            foreach(Location l in Repository.Instance.Locations)
+            {
+                if (l.IsRevealed)
+                {
+                    Locations_listView.Items.Add(l.Address);
+                }
+            }
+        }
+
+        private void Locations_listView_ItemActivate(object sender, EventArgs e)
+        {
+            Location loc = Repository.Instance.Locations[Locations_listView.SelectedItems[0].Index];
+            string entry = $"{loc.Address}\n\n{loc.Summary}";
+            Locations_richTextBox.Text = entry;
         }
 
         private void DrawArchives()
@@ -118,15 +148,21 @@ namespace SecretAgency
             Archive_Listview.Items.Clear();
             foreach(Document d in Repository.Instance.Docs)
             {
-                Archive_Listview.Items.Add(d.DocName);
+                if (d.IsRevealed)
+                {
+                    Archive_Listview.Items.Add(d.DocName);
+                }
+           
             }
         }
 
         private void Archive_Listview_ItemActivate(object sender, EventArgs e)
         {
             Document doc = Repository.Instance.Docs[Archive_Listview.SelectedItems[0].Index];
-            string entry = string.Format("{0}\n\n{1}\n\n{2}",doc.HeaderText,doc.BodyText,doc.EndText);
+            string entry = string.Format("{0}\n\n{1}\n\n{2}\n\n[CURRENT ORDERS]",doc.HeaderText,doc.BodyText,doc.EndText);
             Archive_Richtextbox.Text = entry;
         }
+
+
     }
 }

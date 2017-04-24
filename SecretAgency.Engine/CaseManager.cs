@@ -41,14 +41,27 @@ namespace SecretAgency.Engine
         public void AddTestCase()
         {
             Case _case = new Case("intro_case");
-            Character _char = new Character();
-            Location _loc = new Location();
-            Repository.Instance.Characters.Add(_char);
-            Repository.Instance.Locations.Add(_loc);
+            Character _char = new Character(true)
+            {
+                Summary = "Seems to be up to no good"
+            };
+            Location _loc = new Location(true)
+            {
+                Summary = "Looks suspicious..."
+            };
+            Location _loc2 = new Location(false)
+            {
+                Summary = "This one is even more suspicious"
+            };
+            Repository.Instance.Add(_char);
+            Repository.Instance.Add(_loc);
+            Repository.Instance.Add(_loc2);
             _case.Characters.Add(_char);
             _case.Locations.Add(_loc);
+            _case.Locations.Add(_loc2);
             Cases.Add(_case);
             Console.WriteLine("Test case created");
         }
+
     }
 }

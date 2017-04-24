@@ -37,7 +37,7 @@ namespace SecretAgency.Engine
         {
             Console.WriteLine("GameManager Initializing");
             // Add start documents - so the player knows what to do
-            Repository.Instance.Docs.Add(new Document
+            Repository.Instance.Docs.Add(new Document(true)
             {
                 name = "intro1",
                 DocName = "Briefing",
@@ -46,7 +46,7 @@ namespace SecretAgency.Engine
                 EndText = "Glory to NTD!"
                 
             });
-            Repository.Instance.Docs.Add(new Document
+            Repository.Instance.Docs.Add(new Document(true)
             {
                 name = "intro2",
                 DocName = "Advice",

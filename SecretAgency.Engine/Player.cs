@@ -29,7 +29,7 @@ namespace SecretAgency.Engine
         }
 
         private string _name;
-        public string Name { get { return _name; } protected set { _name = value; } }
+        public string Name { get { return _name; }  set { _name = value; } }
         private Gender _gender;
         public Gender Gender { get { return _gender; } set { _gender = value; } }
 
