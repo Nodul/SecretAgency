@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SecretAgency.Engine;
 
 namespace SecretAgency
 {
@@ -16,6 +17,7 @@ namespace SecretAgency
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            GameManager.Instance.Init();
             Application.Run(new Form1());
         }
     }

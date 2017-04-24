@@ -41,7 +41,6 @@ namespace SecretAgency.Engine
                 switch (_gender)
                 {
                     case Gender.Male:
-                        Console.WriteLine("Male");
                         r = "Mr.";
                         break;
                     case Gender.Female:

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecretAgency.Engine.Helpers;
 
 namespace SecretAgency.Engine
 {
@@ -24,7 +25,15 @@ namespace SecretAgency.Engine
 
         public Character()
         {
-
+            FirstName = TextGen.GetFirstName(this.Gender);
+            LastName = TextGen.GetLastName();
+            Age = RNG.Rng.Next(18,65);
+            TriviaList = new List<string>
+            {
+                TextGen.GetTrivia()
+            };
+            Summary = "Seems to be up to no good";
+            Occupation = TextGen.GetOccupation();          
         }
 
     }

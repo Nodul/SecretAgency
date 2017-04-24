@@ -11,6 +11,16 @@ namespace SecretAgency.Engine
     /// </summary>
     public class Case
     {
+        public string name; // internal name for id purposes
+        public int StartDay;
+        public List<Character> Characters = new List<Character>();
+        public List<Location> Locations = new List<Location>();
 
+        public Case(string name)
+        {
+            this.name = name;
+            StartDay = Time.Instance.TotalDays;
+            
+        }
     }
 }
