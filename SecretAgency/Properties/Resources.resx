@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,51 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Assets_Label_Tooltip" xml:space="preserve">
+    <value>The resources at your disposal.</value>
+  </data>
+  <data name="Date_Label_Tooltip" xml:space="preserve">
+    <value>Current date</value>
+  </data>
+  <data name="DaysTillReview_Label_Tooltip" xml:space="preserve">
+    <value>Days until the next Review is scheduled. Make sure your polls rating is high and heat level is low.</value>
+  </data>
+  <data name="Disinformation_ListItem_Tooltip" xml:space="preserve">
+    <value>Your budget for spreading false or otherwise information about an individual or a group.</value>
+  </data>
+  <data name="Heat_Label_Tooltip" xml:space="preserve">
+    <value>Your overall level of indiscretion. Try to keep it as low as possible or you might find yourself replaced.</value>
+  </data>
+  <data name="HeavyAssault_ListItem_Tooltip" xml:space="preserve">
+    <value>Ex-army unit with enough munitions to destroy any civilian or paramilitary group</value>
+  </data>
+  <data name="Infiltration_ListItem_Tooltip" xml:space="preserve">
+    <value>Number of agents ready to infiltrate a group</value>
+  </data>
+  <data name="Interrogation_ListItem_Tooltip" xml:space="preserve">
+    <value>Capable of abducting a person for interrogation.</value>
+  </data>
+  <data name="PlayerName_Textbox_Tooltip" xml:space="preserve">
+    <value>Welcome Director-General</value>
+  </data>
+  <data name="Polls_Label_Tooltip" xml:space="preserve">
+    <value>The popular opinion of the Party you are representing. Keep it at or above 50%, especially during a Review.</value>
+  </data>
+  <data name="Pursuit_ListItem_Tooltip" xml:space="preserve">
+    <value>A specialized team capable of tracking and reporting the movement of an individual</value>
+  </data>
+  <data name="Removal_ListItem_Tooltip" xml:space="preserve">
+    <value>Specialist tasked with permanent physical removal of individuals</value>
+  </data>
+  <data name="Search_ListItem_Tooltip" xml:space="preserve">
+    <value>Can be ordered to either search or raid a location for any items.</value>
+  </data>
+  <data name="Surveillance_ListItem_Tooltip" xml:space="preserve">
+    <value>A specialized team capable of spying on any individual' or group's location.</value>
+  </data>
 </root>

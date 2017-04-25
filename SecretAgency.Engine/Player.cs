@@ -15,6 +15,22 @@ namespace SecretAgency.Engine
             _gender = Gender.Male;
             _polls = 50;
             _heat = 0;
+            Surveillance = 2;
+            MaxSurveillance = Surveillance;
+            Pursuit = 2;
+            MaxPursuit = Pursuit;
+            Search = 2;
+            MaxSearch = Search;
+            Interrogation = 2;
+            MaxInterrogation = Interrogation;
+            Removal = 1;
+            MaxRemoval = Removal;
+            HeavyAssault = 1;
+            MaxHeavyAssault = HeavyAssault;
+            Disinformation = 20000;
+            MaxDisinformation = Disinformation;
+            Infiltration = 100;
+            MaxInfiltration = Infiltration;
         }
         public static Player Instance
         {
@@ -57,5 +73,24 @@ namespace SecretAgency.Engine
 
         private int _heat;
         public int Heat { get { return _heat; } set { _heat = value; } }
+
+        // ASSETS
+        public int Surveillance { get; set; }
+        public int Pursuit { get; set; }
+        public int Search { get; set; }
+        public int Interrogation { get; set; }
+        public int Removal { get; set; }
+        public int HeavyAssault { get; set; }
+        public int Disinformation { get; set; }
+        public int Infiltration { get; set; }
+
+        public int MaxSurveillance { get; set; }
+        public int MaxPursuit { get; set; }
+        public int MaxSearch { get; set; }
+        public int MaxInterrogation { get; set; }
+        public int MaxRemoval { get; set; }
+        public int MaxHeavyAssault { get; set; }
+        public int MaxDisinformation { get; set; }
+        public int MaxInfiltration { get; set; }
     }
 }

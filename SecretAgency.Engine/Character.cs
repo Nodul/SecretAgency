@@ -7,6 +7,7 @@ using SecretAgency.Engine.Helpers;
 
 namespace SecretAgency.Engine
 {
+    public enum Status {Normal, InHiding,Imprisone,Incapacitated, Dead }
     public enum Gender {Male, Female }
     public enum Prominence {Insignificant, Minor, Significant, Notable }
 
@@ -18,6 +19,7 @@ namespace SecretAgency.Engine
         public int Age { get;  set; }
         public Gender Gender { get;  set; }
         public Prominence Prominence { get;  set; }
+        public Status Status { get; set; }
         public List<string> TriviaList { get;  set; }
         public string Summary { get;  set; }
         public string Occupation { get;  set; }

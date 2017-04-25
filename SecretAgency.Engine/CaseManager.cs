@@ -45,6 +45,10 @@ namespace SecretAgency.Engine
             {
                 Summary = "Seems to be up to no good"
             };
+            Character _char2 = new Character(false)
+            {
+                Summary = "He is the boss of the operations"
+            };
             Location _loc = new Location(true)
             {
                 Summary = "Looks suspicious..."
@@ -54,11 +58,13 @@ namespace SecretAgency.Engine
                 Summary = "This one is even more suspicious"
             };
             Repository.Instance.Add(_char);
+            Repository.Instance.Add(_char2);
             Repository.Instance.Add(_loc);
             Repository.Instance.Add(_loc2);
             _case.Characters.Add(_char);
             _case.Locations.Add(_loc);
             _case.Locations.Add(_loc2);
+            _case.Characters.Add(_char2);
             Cases.Add(_case);
             Console.WriteLine("Test case created");
         }

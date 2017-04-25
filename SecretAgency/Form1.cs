@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SecretAgency.Engine;
+using SecretAgency.Engine.Helpers;
+using SecretAgency.Properties;
 
 namespace SecretAgency
 {
@@ -19,10 +21,43 @@ namespace SecretAgency
             Time.Instance.DayPassed += new Time.DayPassedHandler(DateTime_Textbox_Update);
             Time.Instance.DayPassed += new Time.DayPassedHandler(Heat_Textbox_Update);
             Time.Instance.DayPassed += new Time.DayPassedHandler(Polls_Textbox_Update);
-            this.PlayerName_textbox.Text = Player.Instance.Title;
+            this.PlayerName_Label.Text = Player.Instance.Title;
             this.Polls_textbox.Text = Player.Instance.Polls.ToString()+"%";
             this.Heat_Textbox.Text = Player.Instance.Heat.ToString();
-            
+            LoadTooltips();
+            LoadAssets();
+        }
+
+        private void LoadAssets()
+        {
+            this.Assets_listView.Items[0].Text = $"Surveillance   {Player.Instance.Surveillance} [{Player.Instance.MaxSurveillance}]";
+            this.Assets_listView.Items[1].Text = $"Pursuit        {Player.Instance.Pursuit} [{Player.Instance.MaxPursuit}]";
+            this.Assets_listView.Items[2].Text = $"Search         {Player.Instance.Search} [{Player.Instance.MaxSearch}]";
+            this.Assets_listView.Items[3].Text = $"Interrogation  {Player.Instance.Interrogation} [{Player.Instance.MaxInterrogation}]";
+            this.Assets_listView.Items[4].Text = $"Removal        {Player.Instance.Removal} [{Player.Instance.MaxRemoval}]";
+            this.Assets_listView.Items[5].Text = $"Heavy Assault  {Player.Instance.HeavyAssault} [{Player.Instance.MaxHeavyAssault}]";
+            this.Assets_listView.Items[6].Text = $"Disinformation {Player.Instance.Disinformation}$ [{Player.Instance.MaxDisinformation}$]";
+            this.Assets_listView.Items[7].Text = $"Infiltration   {Player.Instance.Infiltration} [{Player.Instance.MaxInfiltration}]";
+        }
+
+        private void LoadTooltips()
+        {
+            this.toolTip1.SetToolTip(PlayerName_Label, Resources.PlayerName_Textbox_Tooltip);
+            this.toolTip1.SetToolTip(Heat_label,Resources.Heat_Label_Tooltip);
+            this.toolTip1.SetToolTip(Assets_label,Resources.Assets_Label_Tooltip);
+            this.toolTip1.SetToolTip(Polls_label,Resources.Polls_Label_Tooltip);
+            this.toolTip1.SetToolTip(DaysTillReview_label, Resources.DaysTillReview_Label_Tooltip);
+            this.toolTip1.SetToolTip(Date_label, Resources.Date_Label_Tooltip);
+
+            this.Assets_listView.Items[0].ToolTipText = Resources.Surveillance_ListItem_Tooltip;
+            this.Assets_listView.Items[1].ToolTipText = Resources.Pursuit_ListItem_Tooltip;
+            this.Assets_listView.Items[2].ToolTipText = Resources.Search_ListItem_Tooltip;
+            this.Assets_listView.Items[3].ToolTipText = Resources.Interrogation_ListItem_Tooltip;
+            this.Assets_listView.Items[4].ToolTipText = Resources.Removal_ListItem_Tooltip;
+            this.Assets_listView.Items[5].ToolTipText = Resources.HeavyAssault_ListItem_Tooltip;
+            this.Assets_listView.Items[6].ToolTipText = Resources.Disinformation_ListItem_Tooltip;
+            this.Assets_listView.Items[7].ToolTipText = Resources.Infiltration_ListItem_Tooltip;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -64,38 +99,28 @@ namespace SecretAgency
 
         }
 
-        private void PlayerName_textbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DateTime_textbox_TextChanged(object sender, EventArgs e)
-        {
- 
-        }
-
-        private void tabPage7_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Main_tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch ((sender as TabControl).SelectedIndex)
             {
                 case 0: //General
+                    // DrawGeneral();
                     break;
                 case 1: //Facts
+                    // DrawFacts();
                     break;
                 case 2: //Suspects
                     DrawSuspects();
                     break;
                 case 3: //Groups
+                    // DrawGroups();
                     break;
                 case 4: //Locations
                     DrawLocations();
                     break;
-                case 5: //Assets
+                case 5: // Items
+                    //DrawItems()
                     break;
                 case 6: //Archive
                     DrawArchives();
@@ -119,9 +144,8 @@ namespace SecretAgency
         }
         private void Suspects_listView_ItemActivate(object sender, EventArgs e)
         {
-            Character cha = Repository.Instance.Characters[Suspects_listView.SelectedItems[0].Index];
-            string entry = $"{cha.FullName}, {cha.Age} y.o.\n{cha.Address}\n\nOccupation: {cha.Occupation}\nProminence: {cha.Prominence}\n\nSummary: {cha.Summary}\n\nNotes: {cha.TriviaList[0]}\n\n[CURRENT ORDERS]"; 
-            Suspects_richTextBox.Text = entry;
+            Document d = DocCon.Convert(Repository.Instance.Characters[Suspects_listView.SelectedItems[0].Index],true);
+            Suspects_richTextBox.Text = d.Text;
         }
 
         private void DrawLocations()
@@ -138,9 +162,8 @@ namespace SecretAgency
 
         private void Locations_listView_ItemActivate(object sender, EventArgs e)
         {
-            Location loc = Repository.Instance.Locations[Locations_listView.SelectedItems[0].Index];
-            string entry = $"{loc.Address}\n\n{loc.Summary}";
-            Locations_richTextBox.Text = entry;
+            Document d = DocCon.Convert(Repository.Instance.Locations[Locations_listView.SelectedItems[0].Index],true);
+            Locations_richTextBox.Text = d.Text;
         }
 
         private void DrawArchives()
@@ -159,8 +182,7 @@ namespace SecretAgency
         private void Archive_Listview_ItemActivate(object sender, EventArgs e)
         {
             Document doc = Repository.Instance.Docs[Archive_Listview.SelectedItems[0].Index];
-            string entry = string.Format("{0}\n\n{1}\n\n{2}\n\n[CURRENT ORDERS]",doc.HeaderText,doc.BodyText,doc.EndText);
-            Archive_Richtextbox.Text = entry;
+            Archive_Richtextbox.Text = doc.Text;
         }
 
 

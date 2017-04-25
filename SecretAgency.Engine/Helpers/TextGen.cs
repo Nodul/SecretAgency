@@ -18,7 +18,7 @@ namespace SecretAgency.Engine.Helpers
         static string[] lastNames = new string[] { "Dylan", "Smith", "Robinson", "Stiller", "Rothstein", "Kowalski" };
         static string[] trivias = new string[] { "Likes to smoke", "Athletic","Physically weak","Has nerve ticks" };
         static string[] occupations = new string[] {"Unemployed","Factory worker","Scientist","Clerk","Security guard" };
-        static string[] cityNames = new string[] {"New York","Washington","Chicago","San Francisko","Los Angeles" };
+        static string[] cityNames = new string[] {"New York","Washington","Chicago","San Francisco","Los Angeles" };
 
         public static string GetFirstName(Gender gender)
         {
